@@ -1,0 +1,93 @@
+= Fancy Screen Patch for Recettear =
+
+Fancy Screen Patch for Recettear is a patch for the video-game Recettear. +
+The patch adds supports to Recettear for:
+
+* Arbitrary resolutions of aspect-ratios at-least as wide as 4:3.
+* Raising the frame-rate limit above 60-FPS, whilst retaining the game's original frame-rate of 60-FPS for game-logic.
+* Configurability for the texture-filtering algorithm used to up-scale a given category of textures.
+* Restricting the up-scaling of 2D art to integral scaling multipliers.
+* Restricting the width of the HUD to a subset of the game's width.
+* Hiding some persistent control reminders from the HUD.
+
+Additionally, it can install and configure https://github.com/elishacloud/dxwrapper[DxWrapper], http://dege.freeweb.hu/dgVoodoo2/[dgVoodoo2], and https://special-k.info/[Special K] to make the game use DirectX 12, 11, or 9 instead of DirectX 8.1, with improved handling of Alt-Tab and a hardware-accelerated swap chain.
+
+This patch supports both the latest English version and the latest Japanese version of Recettear.
+
+== Installation ==
+
+In short, all that's needed to install the patch is to execute the `Install-FancyScreenPatchForRecettear.ps1` script-file with at-least version 5.1 of PowerShell. +
+If that instruction is insufficient, please see below.
+
+=== On Windows ===
+
+==== Prerequisites ====
+
+On Windows 10, and later:: There are no prerequisites.
+Otherwise, on previous versions of Windows:: https://support.microsoft.com/topic/the-net-framework-4-7-offline-installer-for-windows-f32bcb33-5f94-57ce-6120-62c9526a91f2[At-least version 4.7 of the .NET Framework], and https://learn.microsoft.com/powershell/scripting/windows-powershell/wmf/setup/install-configure?view=powershell-5.1[at-least version 5.1 of PowerShell].
+
+==== Step-by-step ====
+
+. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.bat`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.0/Install-FancyScreenPatchForRecettear.bat[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.0/Install-FancyScreenPatchForRecettear.bat].
+. Run the downloaded script-file by double-clicking it.
+. Follow the instructions provided by the script.
+
+=== On operating-systems other than Windows ===
+
+==== Prerequisites ====
+
+https://learn.microsoft.com/powershell/scripting/install/installing-powershell[At-least version 6.0 of PowerShell].
+
+==== Step-by-step ====
+
+. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.ps1`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.0/Install-FancyScreenPatchForRecettear.ps1[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.0/Install-FancyScreenPatchForRecettear.ps1].
+. Make note of the file-path of the downloaded script-file.
+. Open a terminal.
+. Open a PowerShell shell by running the command: `pwsh`.
+. In the opened PowerShell shell, run the file-path of the downloaded script-file as a command.
+. Follow the instructions provided by the script.
+
+== Screenshots ==
+
+=== The game with this patch applied ===
+
+image::https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/assets/12306246/785e3a75-d00f-474d-8f8d-d2c30067202d[]
+
+=== The game without this patch applied ===
+
+image::https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/assets/12306246/27a48778-6400-48d2-a2ad-f6f755665a2c[]
+
+=== The interactive configurator for this patch ===
+
+image::https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/assets/12306246/7271f0a1-4a94-4e87-9596-9b884ca5c957[]
+
+== Permitted but unsupported usage of the script ==
+
+It is possible to use a resolution with a width less-than 640 pixels, or a height less-than 480 pixels, but this may have adverse visual effects, and is unsupported.
+
+It is possible to use a resolution with an aspect-ratio narrower than 4:3, but this may have adverse visual effects, and is unsupported.
+
+It is possible to restrict the HUD's width to a width less-than the width that an aspect-ratio of 4:3 would have, but this may have adverse visual effects, and is unsupported.
+
+It is possible to restrict the HUD's width to a width greater-than the game's width, but this may have adverse visual effects, and is unsupported.
+
+== Known issues ==
+
+=== In-game ===
+
+GameGlitch-001:: When a wrapper is used to translate the game's Direct3D 8 usage to a different API, the video that plays in the main-menu, when the background artwork scrolls to its topmost point, fails to play, and instead locks the game with a white screen. To workaround this, the patch disables that video. To watch the video when the patch is applied: open, in a video-player, the `recet_op.wmv` file found in the game's directory.
+GameGlitch-002:: When using a resolution with an aspect-ratio wider than 4:3, and when in a 2D area of the game's town (e.g. the Market): when the game is paused, off-screen menus that were previously hidden will become visible in the pause-menu's blur-effect.
+GameGlitch-003:: When using integral-scaling for 2D art, and when using a resolution with a height that is not a multiple of 480: when scrolling down a list of save-slots (when saving or loading the game) the animation for the fourth (off-screen) save-slot becoming the third (on-screen) save-slot is missing.
+
+== In the script ==
+
+ScriptBug-001:: The script does things that the PowerShell runtime does not like, and can cause a memory-leak in the PowerShell process that runs the script, this memory-leak can become sizeable with repeated executions (think many dozens) of the script.
+
+== Authorship ==
+
+Fancy Screen Patch for Recettear was authored by Harry Gillanders <https://harrygillanders.com[https://harrygillanders.com]>.
+
+== Licensing ==
+
+The Fancy Screen Patch for Recettear, and its accompanying documentation, is distributed under the https://www.boost.org/LICENSE_1_0.txt[Boost Software License, Version 1.0].
+
