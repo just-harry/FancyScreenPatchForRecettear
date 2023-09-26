@@ -10196,8 +10196,12 @@ Recettear is being patched as follows:
 						}
 					'PostDrawingOfLowerLetterbox:'
 						0x83, (ModRM 3 0 4), 0x20                                     <# add esp, 32 #>
-						#0xE8, '4:DrawEnqueuedTextures'                                <# call DrawEnqueuedTextures #>
-						0xC3                                                          <# ret #>
+						0x6A, (LE ([Byte] $TextureFilteringAlgorithmLookup.NearestNeighbour)) <# push $TextureFilteringAlgorithmLookup.NearestNeighbour #>
+						0x6A, 0x10                                                            <# push 16 #>
+						0x6A, 0x00                                                            <# push 0 #>
+						0xE8, '4:CallSetTextureStageStateOnTheDirect3DDevice'                 <# call CallSetTextureStageStateOnTheDirect3DDevice #>
+						0xE8, '4:DrawEnqueuedTextures'                                        <# call DrawEnqueuedTextures #>
+						0xC3                                                                  <# ret #>
 					)
 
 					Hijack 'DrawBlackBarsOverMostThings' 'PresentFrame' 1248 6 @(
