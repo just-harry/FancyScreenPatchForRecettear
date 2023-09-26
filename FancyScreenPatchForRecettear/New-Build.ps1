@@ -23,6 +23,10 @@ Param (
 )
 
 
+$Data = . (Join-Path $PSScriptRoot Data.ps1)
+$ScriptVersion = $Data.ScriptVersion
+
+
 $OutputScript = Copy-Item -LiteralPath $ScriptPath -Destination $OutputScriptPath -PassThru -ErrorAction Stop
 
 
@@ -35,7 +39,7 @@ $BatchHeaderLines = @(
 		+ '& ' `
 		+ '{' `
 			+ '[Console]::WindowHeight = [Console]::LargestWindowHeight * 4 / 5;' `
-			+ '$Script = ''Install-FancyScreenPatchForRecettear.v1_0_0.FromBatchFile.ps1'';' `
+			+ "`$Script = 'Install-FancyScreenPatchForRecettear.v$($ScriptVersion.Major)_$($ScriptVersion.Minor)_$($ScriptVersion.Build).FromBatchFile.ps1';" `
 			+ '$B = [IO.File]::ReadAllBytes(\"%~nx0\");' `
 			+ '$O = $B[0xZZZZ .. ($B.Length - 1)];' `
 			+ 'try' `
