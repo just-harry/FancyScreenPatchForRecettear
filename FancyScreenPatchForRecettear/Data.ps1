@@ -11,6 +11,6 @@
 Param ()
 
 [PSCustomObject] @{
-	ScriptVersion = [Version]::new(1, 0, 0)
+	ScriptVersion = [Version]::new(1, 0, 1)
 }
 
