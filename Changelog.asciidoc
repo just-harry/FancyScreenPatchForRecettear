@@ -1,0 +1,8 @@
+= Fancy Screen Patch for Recettear =
+
+== Changelog ==
+
+=== Version 1.0.1 ===
+
+* A bug that caused the texture-filtering algorithm option for `FPSOSD` to also, wrongly, apply to the pillarboxes drawn by the patch was fixed.
+
