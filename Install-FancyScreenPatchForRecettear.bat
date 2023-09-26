@@ -1,5 +1,5 @@
 @echo off
-start "Fancy Screen Patch for Recettear" /D "%~dp0" powershell.exe -ExecutionPolicy Bypass -NoExit -Command "& {[Console]::WindowHeight = [Console]::LargestWindowHeight * 4 / 5;$Script = 'Install-FancyScreenPatchForRecettear.v1_0_0.FromBatchFile.ps1';$B = [IO.File]::ReadAllBytes(\"%~nx0\");$O = $B[0x030E .. ($B.Length - 1)];try{$S = [IO.File]::ReadAllBytes($Script);if ($O.Length -ne $S.Length -or -not [Linq.Enumerable]::SequenceEqual($O, $S)) {if ($Host.UI.PromptForChoice($Null, \"The contents of the file at `\"$($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Script))`\" will be overwritten. Would you like to proceed?\", ('&Yes', '&No'), 0) -ne 0){return}}}catch {}[IO.File]::WriteAllBytes($Script, $O);& (Join-Path . $Script)}"
+start "Fancy Screen Patch for Recettear" /D "%~dp0" powershell.exe -ExecutionPolicy Bypass -NoExit -Command "& {[Console]::WindowHeight = [Console]::LargestWindowHeight * 4 / 5;$Script = 'Install-FancyScreenPatchForRecettear.v1_0_1.FromBatchFile.ps1';$B = [IO.File]::ReadAllBytes(\"%~nx0\");$O = $B[0x030E .. ($B.Length - 1)];try{$S = [IO.File]::ReadAllBytes($Script);if ($O.Length -ne $S.Length -or -not [Linq.Enumerable]::SequenceEqual($O, $S)) {if ($Host.UI.PromptForChoice($Null, \"The contents of the file at `\"$($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Script))`\" will be overwritten. Would you like to proceed?\", ('&Yes', '&No'), 0) -ne 0){return}}}catch {}[IO.File]::WriteAllBytes($Script, $O);& (Join-Path . $Script)}"
 exit /b
 
 
@@ -6825,7 +6825,7 @@ Recettear is being patched as follows:
 
 				Preassemble 'PatchData' ($ImageBase + $VirtualAddressOfPatchData) $RawDataOffsetOfPatchData @(
 				'MagicHeader:16:(char[16])', $UTF8.GetBytes('FancyScreenPatch')
-				'HeaderVersion:4', (LittleEndian 1)
+				'HeaderVersion:4', (LittleEndian 2)
 				'HeaderReservedSpace:44', ([Byte[]]::new(44))
 
 				'PresentationFrameTiming:'
@@ -10169,21 +10169,21 @@ Recettear is being patched as follows:
 					}
 
 					Preassemble 'DrawBlackBars' @(
-						0xA1, '&Direct3DDevice'                                       <# mov eax, [&Direct3DDevice] #>
-						0xFF, (ModRM 0 6 5), '&BlackBarTexture'                       <# push [&BlackBarTexture] #>
-						0x68, 0x00, 0x00, 0x00, 0x00                                  <# push 0 #>
-						0x8B, (ModRM 0 1 0)                                           <# mov ecx, [eax] #>
-						0x50                                                          <# push eax #>
-						0xFF, (ModRM 2 2 1), 0xF4, 0x00, 0x00, 0x00                   <# call [ecx + 244] #>
+						0xA1, '&Direct3DDevice'                                               <# mov eax, [&Direct3DDevice] #>
+						0xFF, (ModRM 0 6 5), '&BlackBarTexture'                               <# push [&BlackBarTexture] #>
+						0x68, 0x00, 0x00, 0x00, 0x00                                          <# push 0 #>
+						0x8B, (ModRM 0 1 0)                                                   <# mov ecx, [eax] #>
+						0x50                                                                  <# push eax #>
+						0xFF, (ModRM 2 2 1), 0xF4, 0x00, 0x00, 0x00                           <# call [ecx + 244] #>
 
-						0x83, (ModRM 3 5 4), 0x20                                     <# sub esp, 32 #>
+						0x83, (ModRM 3 5 4), 0x20                                             <# sub esp, 32 #>
 
-						0xF7, (ModRM 0 0 5), '&BlackBarFlags', 0x01, 0x00, 0x00, 0x00 <# test [&BlackBarFlags], 0b0001 #>
-						0x74, '1:PostDrawingOfLeftPillarbox'                          <# jz PostDrawingOfLeftPillarbox #>
+						0xF7, (ModRM 0 0 5), '&BlackBarFlags', 0x01, 0x00, 0x00, 0x00         <# test [&BlackBarFlags], 0b0001 #>
+						0x74, '1:PostDrawingOfLeftPillarbox'                                  <# jz PostDrawingOfLeftPillarbox #>
 						(& $EnqueueBlackBar 0 0 $2DPillarboxWidth $2DScaledBaseHeight)
 					'PostDrawingOfLeftPillarbox:'
-						0xF7, (ModRM 0 0 5), '&BlackBarFlags', 0x02, 0x00, 0x00, 0x00 <# test [&BlackBarFlags], 0b0010 #>
-						0x74, '1:PostDrawingOfRightPillarbox'                         <# jz PostDrawingOfRightPillarbox #>
+						0xF7, (ModRM 0 0 5), '&BlackBarFlags', 0x02, 0x00, 0x00, 0x00         <# test [&BlackBarFlags], 0b0010 #>
+						0x74, '1:PostDrawingOfRightPillarbox'                                 <# jz PostDrawingOfRightPillarbox #>
 						(& $EnqueueBlackBar ($GameBaseWidth + $2DPillarboxWidth) 0 $2DPillarboxWidth $2DScaledBaseHeight)
 					'PostDrawingOfRightPillarbox:'
 						if ($Script:UsingIntegral2DScaling)
@@ -10200,9 +10200,13 @@ Recettear is being patched as follows:
 							(& $EnqueueBlackBar 0 ($GameBaseHeight + $2DLetterboxHeight) $2DScaledBaseWidth $2DLetterboxHeight)
 						}
 					'PostDrawingOfLowerLetterbox:'
-						0x83, (ModRM 3 0 4), 0x20                                     <# add esp, 32 #>
-						#0xE8, '4:DrawEnqueuedTextures'                                <# call DrawEnqueuedTextures #>
-						0xC3                                                          <# ret #>
+						0x83, (ModRM 3 0 4), 0x20                                             <# add esp, 32 #>
+						0x6A, (LE ([Byte] $TextureFilteringAlgorithmLookup.NearestNeighbour)) <# push $TextureFilteringAlgorithmLookup.NearestNeighbour #>
+						0x6A, 0x10                                                            <# push 16 #>
+						0x6A, 0x00                                                            <# push 0 #>
+						0xE8, '4:CallSetTextureStageStateOnTheDirect3DDevice'                 <# call CallSetTextureStageStateOnTheDirect3DDevice #>
+						0xE8, '4:DrawEnqueuedTextures'                                        <# call DrawEnqueuedTextures #>
+						0xC3                                                                  <# ret #>
 					)
 
 					Hijack 'DrawBlackBarsOverMostThings' 'PresentFrame' 1248 6 @(
