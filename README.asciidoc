@@ -73,16 +73,14 @@ It is possible to restrict the HUD's width to a width greater-than the game's wi
 
 == Known issues ==
 
-If an issue is struck-out that denotes that the issue was fixed in the latest version of the patch. +
-If an issue is underlined that denotes that the issue was introduced by the latest version of the patch.
+If an issue is struck-out that denotes that the issue was fixed in the latest version of the patch.
 
 === In-game ===
 
 GameGlitch-001:: When a wrapper is used to translate the game's Direct3D 8 usage to a different API, the video that plays in the main-menu, when the background artwork scrolls to its topmost point, fails to play, and instead locks the game with a white screen. To workaround this, the patch disables that video. To watch the video when the patch is applied: open, in a video-player, the `recet_op.wmv` file found in the game's directory.
 GameGlitch-002:: When using a resolution with an aspect-ratio wider than 4:3, and when in a 2D area of the game's town (e.g. the Market): when the game is paused, off-screen menus that were previously hidden will become visible in the pause-menu's blur-effect.
 GameGlitch-003:: When using integral-scaling for 2D art, and when using a resolution with a height that is not a multiple of 480: when scrolling down a list of save-slots (when saving or loading the game) the animation for the fourth (off-screen) save-slot becoming the third (on-screen) save-slot is missing.
-GameGlitch-004:: +++<del>+++If a texture-filtering algorithm other than Nearest Neighbour is configured to be used for the game's FPS OSD, pillarboxes drawn by the patch will be partially translucent.+++</del>+++
-GameGlitch-005:: +++<ins>+++Pillarboxes and letterboxes drawn by the patch are sometimes not drawn when they should be, such as in 2D areas of the game's town.+++</ins>+++
+GameGlitch-005:: +++<del>+++Pillarboxes and letterboxes drawn by the patch are sometimes not drawn when they should be, such as in 2D areas of the game's town.+++</del>+++
 
 === In the script ===
 
