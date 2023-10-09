@@ -1,5 +1,5 @@
 @echo off
-start "Fancy Screen Patch for Recettear" /D "%~dp0" powershell.exe -ExecutionPolicy Bypass -NoExit -Command "& {[Console]::WindowHeight = [Console]::LargestWindowHeight * 4 / 5;$Script = 'Install-FancyScreenPatchForRecettear.v1_0_1.FromBatchFile.ps1';$B = [IO.File]::ReadAllBytes(\"%~nx0\");$O = $B[0x030E .. ($B.Length - 1)];try{$S = [IO.File]::ReadAllBytes($Script);if ($O.Length -ne $S.Length -or -not [Linq.Enumerable]::SequenceEqual($O, $S)) {if ($Host.UI.PromptForChoice($Null, \"The contents of the file at `\"$($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Script))`\" will be overwritten. Would you like to proceed?\", ('&Yes', '&No'), 0) -ne 0){return}}}catch {}[IO.File]::WriteAllBytes($Script, $O);& (Join-Path . $Script)}"
+start "Fancy Screen Patch for Recettear" /D "%~dp0" powershell.exe -ExecutionPolicy Bypass -NoExit -Command "& {[Console]::WindowHeight = [Console]::LargestWindowHeight * 4 / 5;$Script = 'Install-FancyScreenPatchForRecettear.v1_0_2.FromBatchFile.ps1';$B = [IO.File]::ReadAllBytes(\"%~nx0\");$O = $B[0x030E .. ($B.Length - 1)];try{$S = [IO.File]::ReadAllBytes($Script);if ($O.Length -ne $S.Length -or -not [Linq.Enumerable]::SequenceEqual($O, $S)) {if ($Host.UI.PromptForChoice($Null, \"The contents of the file at `\"$($ExecutionContext.SessionState.Path.GetUnresolvedProviderPathFromPSPath($Script))`\" will be overwritten. Would you like to proceed?\", ('&Yes', '&No'), 0) -ne 0){return}}}catch {}[IO.File]::WriteAllBytes($Script, $O);& (Join-Path . $Script)}"
 exit /b
 
 
@@ -6825,7 +6825,7 @@ Recettear is being patched as follows:
 
 				Preassemble 'PatchData' ($ImageBase + $VirtualAddressOfPatchData) $RawDataOffsetOfPatchData @(
 				'MagicHeader:16:(char[16])', $UTF8.GetBytes('FancyScreenPatch')
-				'HeaderVersion:4', (LittleEndian 2)
+				'HeaderVersion:4', (LittleEndian 3)
 				'HeaderReservedSpace:44', ([Byte[]]::new(44))
 
 				'PresentationFrameTiming:'
@@ -10201,6 +10201,26 @@ Recettear is being patched as follows:
 						}
 					'PostDrawingOfLowerLetterbox:'
 						0x83, (ModRM 3 0 4), 0x20                                             <# add esp, 32 #>
+						<# These three proceeding calls are calling SetRenderState on Direct3DDevice,
+						   setting D3DRS_ALPHABLENDENABLE to 1, D3DRS_SRCBLEND to 5, and D3DRS_DESTBLEND to 6, respectively. #>
+						0xA1, '&Direct3DDevice'                                               <# mov eax, [&Direct3DDevice] #>
+						0x68, 0x01, 0x00, 0x00, 0x00                                          <# push 1 #>
+						0x68, 0x1B, 0x00, 0x00, 0x00                                          <# push 27 #>
+						0x8B, (ModRM 0 1 0)                                                   <# mov ecx, [eax] #>
+						0x50                                                                  <# push eax #>
+						0xFF, (ModRM 2 2 1), 0xC8, 0x00, 0x00, 0x00                           <# call [ecx + 200] #>
+						0xA1, '&Direct3DDevice'                                               <# mov eax, [&Direct3DDevice] #>
+						0x68, 0x05, 0x00, 0x00, 0x00                                          <# push 5 #>
+						0x68, 0x13, 0x00, 0x00, 0x00                                          <# push 19 #>
+						0x8B, (ModRM 0 1 0)                                                   <# mov ecx, [eax] #>
+						0x50                                                                  <# push eax #>
+						0xFF, (ModRM 2 2 1), 0xC8, 0x00, 0x00, 0x00                           <# call [ecx + 200] #>
+						0xA1, '&Direct3DDevice'                                               <# mov eax, [&Direct3DDevice] #>
+						0x68, 0x06, 0x00, 0x00, 0x00                                          <# push 6 #>
+						0x68, 0x14, 0x00, 0x00, 0x00                                          <# push 20 #>
+						0x8B, (ModRM 0 1 0)                                                   <# mov ecx, [eax] #>
+						0x50                                                                  <# push eax #>
+						0xFF, (ModRM 2 2 1), 0xC8, 0x00, 0x00, 0x00                           <# call [ecx + 200] #>
 						0x6A, (LE ([Byte] $TextureFilteringAlgorithmLookup.NearestNeighbour)) <# push $TextureFilteringAlgorithmLookup.NearestNeighbour #>
 						0x6A, 0x10                                                            <# push 16 #>
 						0x6A, 0x00                                                            <# push 0 #>
