@@ -2,6 +2,10 @@
 
 == Changelog ==
 
+=== Version 1.0.2 ===
+
+* A bug, which was introduced by version 1.0.1, that caused pillarboxes and letterboxes drawn by the patch to not draw sometimes was fixed.
+
 === Version 1.0.1 ===
 
 * A bug that caused the texture-filtering algorithm option for `FPSOSD` to also, wrongly, apply to the pillarboxes drawn by the patch was fixed.
