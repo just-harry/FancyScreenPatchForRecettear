@@ -2,6 +2,12 @@
 
 == Changelog ==
 
+=== Version 1.0.3 ===
+
+* A now-dead URL that was used for downloading Special K is no longer used.
+* The error handling that was supposed to try alternative URLs when a file download failed was fixed. (According to `Invoke-WebRequest`, `-ErrorAction Continue` actually means "explode and stop").
+* Four "archive.org" fallback URLs were changed such that they serve the actual files to PowerShell.
+
 === Version 1.0.2 ===
 
 * A bug, which was introduced by version 1.0.1, that caused pillarboxes and letterboxes drawn by the patch to not draw sometimes was fixed.
