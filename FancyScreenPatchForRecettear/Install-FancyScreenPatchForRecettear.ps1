@@ -10887,7 +10887,7 @@ Recettear is being patched as follows:
 				Fingerprint = [PSCustomObject] @{FileSize = 14031026; SHA256Hash = '9E139E361711F356A670CBBFD94BD385DE4BD1145049B2BA367989F870185E73'}
 				URLs = [String[]] @(
 					'https://egs-soft.info/product/recet/rece_update1126.zip'
-					'https://web.archive.org/web/20160821161336/http://egs-soft.info/product/recet/rece_update1126.zip'
+					'https://web.archive.org/web/20160821161336if_/http://egs-soft.info/product/recet/rece_update1126.zip'
 				)
 				RootPath = [RegEx]::new('^/?rece_update1126/', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
 			}
@@ -11300,7 +11300,7 @@ Recettear is being patched as follows:
 				Fingerprint = [PSCustomObject] @{FileSize = 5370660; SHA256Hash = '9C29693121B15B28C6E499A77AF23911011FA2D741316674DC98A4BD33542C9D'}
 				URLs = [String[]] @(
 					'https://github.com/elishacloud/dxwrapper/releases/download/v1.0.6542.21/dxwrapper.zip'
-					'https://web.archive.org/web/20230712000800/https://objects.githubusercontent.com/github-production-release-asset-2e65be/81271358/d1b0dd80-c0a8-11eb-8ec1-61bfbc27c317?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230712%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230712T000800Z&X-Amz-Expires=300&X-Amz-Signature=2f4de384dee5ffbb625a083f22a721e64dbcbfc51f7964ee84c906ddc555cd89&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=81271358&response-content-disposition=attachment%3B%20filename%3Ddxwrapper.zip&response-content-type=application%2Foctet-stream'
+					'https://web.archive.org/web/20230712000800if_/https://objects.githubusercontent.com/github-production-release-asset-2e65be/81271358/d1b0dd80-c0a8-11eb-8ec1-61bfbc27c317?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAIWNJYAX4CSVEH53A%2F20230712%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20230712T000800Z&X-Amz-Expires=300&X-Amz-Signature=2f4de384dee5ffbb625a083f22a721e64dbcbfc51f7964ee84c906ddc555cd89&X-Amz-SignedHeaders=host&actor_id=0&key_id=0&repo_id=81271358&response-content-disposition=attachment%3B%20filename%3Ddxwrapper.zip&response-content-type=application%2Foctet-stream'
 				)
 				RootPath = [RegEx]::new('^/?', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
 			}
@@ -11337,7 +11337,7 @@ Recettear is being patched as follows:
 				Fingerprint = [PSCustomObject] @{FileSize = 5836398; SHA256Hash = '5D0407917DCAADEB9F8796355ABA10BC51A875812868F4549F624E7BBE0D8DBF'}
 				URLs = [String[]] @(
 					'http://dege.freeweb.hu/dgVoodoo2/bin/dgVoodoo2_81_2.zip'
-					'https://web.archive.org/web/20230827194343/http://dege.freeweb.hu/dgVoodoo2/bin/dgVoodoo2_81_2.zip'
+					'https://web.archive.org/web/20230827194343if_/http://dege.freeweb.hu/dgVoodoo2/bin/dgVoodoo2_81_2.zip'
 				)
 				RootPath = [RegEx]::new('^/?', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
 			}
@@ -11374,7 +11374,7 @@ Recettear is being patched as follows:
 				Fingerprint = [PSCustomObject] @{FileSize = 7351962; SHA256Hash = 'FD01D18106472E9B0F6C0FB89256A6928407EFD36A98FF2E1D451AA0E6021FBB'}
 				URLs = [String[]] @(
 					'https://nightly.link/SpecialKO/SpecialK/suites/15177810613/artifacts/867301204'
-					'https://web.archive.org/web/20230817222304/https://pipelines.actions.githubusercontent.com/serviceHosts/8fb96cb4-27f5-4b0b-b1d1-89bc7687ccf5/_apis/pipelines/1/runs/487/signedartifactscontent?artifactName=SpecialK_23.8.17_ec35813d&urlExpires=2023-08-17T22%3A23%3A46.8004156Z&urlSigningMethod=HMACV2&urlSignature=9%2BR5hmMe1WrtTeCA4tnK13v3L6z%2BEPBZkjgR2VOL2ik%3D'
+					'https://web.archive.org/web/20230817222304if_/https://pipelines.actions.githubusercontent.com/serviceHosts/8fb96cb4-27f5-4b0b-b1d1-89bc7687ccf5/_apis/pipelines/1/runs/487/signedartifactscontent?artifactName=SpecialK_23.8.17_ec35813d&urlExpires=2023-08-17T22%3A23%3A46.8004156Z&urlSigningMethod=HMACV2&urlSignature=9%2BR5hmMe1WrtTeCA4tnK13v3L6z%2BEPBZkjgR2VOL2ik%3D'
 				)
 				RootPath = [RegEx]::new('^/?', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
 			}
