@@ -2142,11 +2142,20 @@ Use-Disposable $(
 
 					$StopWatch.Stop()
 
-					Invoke-WebRequest -UseBasicParsing -Uri $URL -OutFile $DestinationPath -ErrorAction Continue
+					$DownloadSucceeded = try
+					{
+						Invoke-WebRequest -UseBasicParsing -Uri $URL -OutFile $DestinationPath -ErrorAction Continue > $Null
+						$?
+					}
+					catch
+					{
+						Write-Error $_ -ErrorAction Continue
+						$False
+					}
 
 					$StopWatch.Start()
 
-					if ($?)
+					if ($DownloadSucceeded)
 					{
 						$DownloadedFile = Get-Item -LiteralPath $DestinationPath -ErrorAction Stop
 						$Fingerprint = $FileDescription.Fingerprint
