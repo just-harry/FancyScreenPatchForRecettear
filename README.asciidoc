@@ -28,7 +28,7 @@ Otherwise, on previous versions of Windows:: https://support.microsoft.com/topic
 
 ==== Step-by-step ====
 
-. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.bat`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.2/Install-FancyScreenPatchForRecettear.bat[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.2/Install-FancyScreenPatchForRecettear.bat].
+. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.bat`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.3/Install-FancyScreenPatchForRecettear.bat[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.3/Install-FancyScreenPatchForRecettear.bat].
 . Run the downloaded script-file by double-clicking it.
 . Follow the instructions provided by the script.
 
@@ -40,7 +40,7 @@ https://learn.microsoft.com/powershell/scripting/install/installing-powershell[A
 
 ==== Step-by-step ====
 
-. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.ps1`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.2/Install-FancyScreenPatchForRecettear.ps1[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.2/Install-FancyScreenPatchForRecettear.ps1].
+. Download the patch's script-file, `Install-FancyScreenPatchForRecettear.ps1`, from https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.3/Install-FancyScreenPatchForRecettear.ps1[https://github.com/Unjust-Harry/FancyScreenPatchForRecettear/releases/download/v1.0.3/Install-FancyScreenPatchForRecettear.ps1].
 . Make note of the file-path of the downloaded script-file.
 . Open a terminal.
 . Open a PowerShell shell by running the command: `pwsh`.
