@@ -11373,7 +11373,6 @@ Recettear is being patched as follows:
 				FileName = 'SpecialK_23.8.17.zip'
 				Fingerprint = [PSCustomObject] @{FileSize = 7351962; SHA256Hash = 'FD01D18106472E9B0F6C0FB89256A6928407EFD36A98FF2E1D451AA0E6021FBB'}
 				URLs = [String[]] @(
-					'https://nightly.link/SpecialKO/SpecialK/suites/15177810613/artifacts/867301204'
 					'https://web.archive.org/web/20230817222304if_/https://pipelines.actions.githubusercontent.com/serviceHosts/8fb96cb4-27f5-4b0b-b1d1-89bc7687ccf5/_apis/pipelines/1/runs/487/signedartifactscontent?artifactName=SpecialK_23.8.17_ec35813d&urlExpires=2023-08-17T22%3A23%3A46.8004156Z&urlSigningMethod=HMACV2&urlSignature=9%2BR5hmMe1WrtTeCA4tnK13v3L6z%2BEPBZkjgR2VOL2ik%3D'
 				)
 				RootPath = [RegEx]::new('^/?', [Text.RegularExpressions.RegexOptions]::IgnoreCase)
